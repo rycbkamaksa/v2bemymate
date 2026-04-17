@@ -1,0 +1,48 @@
+version: "3.2"
+
+services:
+  mongo:
+    image: mongo
+    hostname: mongodb
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASS}
+    ports:
+      - "27017:27017"
+
+  search:
+    restart: unless-stopped
+    hostname: bemymatesearch
+    ports:
+      - "5176:5176"
+    build:
+      context: modules/socketio-server
+    environment:
+      - NODE_ENV=production
+      - APP_HOST=bemymateapp
+      - DB_URL=mongodb://${DB_USER}:${DB_PASS}@mongodb:27017/
+    volumes:
+      - type: bind
+        source: ./modules/socketio-server/logs
+        target: /app/bemymate-search/logs
+        read_only: false
+
+  app:
+    restart: unless-stopped
+    hostname: bemymateapp
+    build:
+      context: .
+    ports:
+      - "3000:3000"
+    env_file:
+      - app.env
+    environment:
+      - NODE_ENV=production
+      - NUXT_DB_URL=mongodb://${DB_USER}:${DB_PASS}@mongodb:27017/
+      - NUXT_PUBLIC_SEARCH_HOST=https://bemymate.ru
+    volumes:
+      - type: bind
+        source: ./logs
+        target: /app/bemymate/logs
+        read_only: false

@@ -1,0 +1,9 @@
+export interface IMatchingConfig {
+  ELO_TOLERANCE: number
+  RATING_TOLERANCE: number
+  QUALIFICATION_GAMES: number
+  BEGINNER_SEARCH_DURATION: number
+  TOXIC_BAN_BORDER: number
+  BAN_DURATION_MULTIPLIER: number
+  MATCH_SUBMIT_TIMEOUT: number
+}

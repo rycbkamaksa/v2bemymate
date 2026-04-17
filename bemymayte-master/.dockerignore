@@ -1,0 +1,11 @@
+node_modules
+modules
+.nuxt
+.idea
+*[dD]ocker*
+*git*
+*.md
+.prettierrc.json
+.eslintrc.js
+dropDB.js
+downloadMails.js

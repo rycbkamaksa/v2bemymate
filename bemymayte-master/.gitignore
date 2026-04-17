@@ -1,0 +1,13 @@
+build
+node_modules
+*.log*
+*.txt
+.nuxt
+.nitro
+.cache
+.output
+*.env
+dist
+.idea
+package-lock.json
+*.pdf

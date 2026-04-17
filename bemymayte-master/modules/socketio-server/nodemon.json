@@ -1,0 +1,6 @@
+{
+  "watch": ["."],
+  "ext": ".ts,.js,.mts,.mjs,.cjs,.cts",
+  "ignore": [],
+  "exec": "ts-node ./index.ts"
+}
