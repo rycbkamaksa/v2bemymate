@@ -56,7 +56,7 @@ const stdFormat = format.printf((rawInfo) => {
       return
     }
 
-    (info as Record<string, unknown>)[k] = prodColorizer(k, v as string)
+    (info as unknown as Record<string, unknown>)[k] = prodColorizer(k, v as string)
   })
 
   const {
