@@ -1,4 +1,3 @@
-import './consts/env'
 import type { IChatOutPayload, IPlayerLeavePayload, ISearchCancelPayload, ISearchInitPayload } from './types/requests'
 import type { Socket } from 'socket.io'
 import { BASE_APP_HOST, BASE_APP_URL } from './consts/requests'

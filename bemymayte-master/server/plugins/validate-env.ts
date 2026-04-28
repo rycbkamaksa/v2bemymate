@@ -9,8 +9,9 @@ export default defineNitroPlugin(() => {
   if (!config.public.searchHost) missing.push('NUXT_PUBLIC_SEARCH_HOST')
 
   if (missing.length) {
-    console.error(`[env] Missing required environment variables: ${missing.join(', ')}`)
-    console.error('[env] Copy bemymayte-master/.env.example to .env and fill in the values.')
-    process.exit(1)
+    throw new Error(
+      `[env] Missing required environment variables: ${missing.join(', ')}. ` +
+        `Copy bemymayte-master/.env.example to .env and fill in the values.`
+    )
   }
 })

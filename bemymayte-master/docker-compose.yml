@@ -9,13 +9,15 @@ services:
       MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
       MONGO_INITDB_ROOT_PASSWORD: ${DB_PASS}
     ports:
-      - "27017:27017"
+      - "127.0.0.1:27017:27017"
+    volumes:
+      - mongo_data:/data/db
 
   search:
     restart: unless-stopped
     hostname: bemymatesearch
     ports:
-      - "5176:5176"
+      - "127.0.0.1:5176:5176"
     build:
       context: modules/socketio-server
     environment:
@@ -27,6 +29,8 @@ services:
         source: ./modules/socketio-server/logs
         target: /app/bemymate-search/logs
         read_only: false
+    depends_on:
+      - mongo
 
   app:
     restart: unless-stopped
@@ -34,7 +38,7 @@ services:
     build:
       context: .
     ports:
-      - "3000:3000"
+      - "127.0.0.1:3001:3000"
     env_file:
       - app.env
     environment:
@@ -46,3 +50,9 @@ services:
         source: ./logs
         target: /app/bemymate/logs
         read_only: false
+    depends_on:
+      - mongo
+      - search
+
+volumes:
+  mongo_data:
