@@ -148,8 +148,12 @@ async function getSelfLevel(): Promise<number> {
 
 function prepareRoom() {
   room.clearPlayers()
-  room.addPlayer(new Player(user.getPlayer()))
+  const me = user.getPlayer()
+  console.log('[prepareRoom] user.$state:', JSON.stringify(user.$state))
+  console.log('[prepareRoom] getPlayer():', JSON.stringify({ guid: me.guid, nickname: me.nickname, img: me.img }))
+  room.addPlayer(me)
   room.$state.players[0].level = faceitLevel
+  console.log('[prepareRoom] room.$state.players[0]:', JSON.stringify({ guid: room.$state.players[0].guid, nickname: room.$state.players[0].nickname, img: room.$state.players[0].img }))
 }
 
 function updateRoomPlayers(players: Omit<Player, 'profile'>[]) {
