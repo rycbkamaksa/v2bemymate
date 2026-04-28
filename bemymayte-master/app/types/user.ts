@@ -27,7 +27,8 @@ export interface IUserState extends Pick<IUser, 'picture' | 'email' | 'birthdate
 }
 
 export interface IUserRegData {
-  main_role: MainRoleEnum
+  // optional: пользователь ещё не выбрал роль, пока проходит онбординг
+  main_role?: MainRoleEnum
   secondary_roles: RoleEnum[]
   gender: 'male' | 'female' | 'unknown'
   city: string

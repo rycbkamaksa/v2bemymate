@@ -14,21 +14,19 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "RegGender",
-  props: ['modelValue'],
-  emits: ['update:modelValue'],
-  data() {
-    return {
-      options: [
-        { value: 'male', icon: 'assets/genders/male.svg' },
-        { value: 'female', icon: 'assets/genders/female.svg' },
-        { value: 'unknown', icon: 'assets/genders/unknown.svg' }
-      ]
-    }
-  }
-}
+<script setup lang="ts">
+import maleIcon from '~/assets/genders/male.svg'
+import femaleIcon from '~/assets/genders/female.svg'
+import unknownIcon from '~/assets/genders/unknown.svg'
+
+defineProps<{ modelValue?: string }>()
+defineEmits<{ (e: 'update:modelValue', value: string): void }>()
+
+const options = [
+  { value: 'male', icon: maleIcon },
+  { value: 'female', icon: femaleIcon },
+  { value: 'unknown', icon: unknownIcon },
+]
 </script>
 
 <style scoped>

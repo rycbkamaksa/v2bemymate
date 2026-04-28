@@ -20,7 +20,8 @@ export const useUserStore = defineStore('user', {
   actions: {
     async logout() {
       await useFetch('/api/users/logout', { method: 'post' })
-      this.$state.registered = false
+      this.removeStoredUser()
+      this.$reset()
       await useRouter().push('/login')
     },
 
@@ -44,16 +45,18 @@ export const useUserStore = defineStore('user', {
       )
     },
 
-    //Удаляет jwt из localStorage
+    // Удаляет jwt из localStorage и сбрасывает in-memory state до дефолтов
+    // (чтобы поля предыдущего пользователя не утекали в новую сессию)
     removeStoredUser() {
       localStorage.removeItem(LS_KEYS.jwt)
+      this.$reset()
     },
   },
 })
 
 export const useRegDataStore = defineStore('regData', {
   state: (): IUserRegData => ({
-    main_role: undefined as any,
+    // main_role остаётся unset до выбора пользователем — опционально по типу
     secondary_roles: [],
     gender: 'unknown',
     city: '',
