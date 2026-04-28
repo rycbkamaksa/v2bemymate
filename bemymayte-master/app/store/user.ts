@@ -6,7 +6,16 @@ import { defineStore } from 'pinia'
 import { Player } from '~/models'
 
 export const useUserStore = defineStore('user', {
-  state: () => ({} as IUserState),
+  state: (): IUserState => ({
+    picture: '',
+    email: '',
+    birthdate: '',
+    nickname: '',
+    locale: '',
+    guid: '',
+    authenticated: false,
+    registered: false,
+  }),
 
   actions: {
     async logout() {
@@ -43,5 +52,11 @@ export const useUserStore = defineStore('user', {
 })
 
 export const useRegDataStore = defineStore('regData', {
-  state: () => ({} as IUserRegData),
+  state: (): IUserRegData => ({
+    main_role: undefined as any,
+    secondary_roles: [],
+    gender: 'unknown',
+    city: '',
+    jwt: '',
+  }),
 })
