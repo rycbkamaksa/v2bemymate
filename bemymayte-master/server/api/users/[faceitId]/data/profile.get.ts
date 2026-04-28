@@ -72,11 +72,11 @@ export default defineEventHandler(async (event) => {
       return null
     })
 
-    res.faceitLevel = playerFaceitGames?.csgo?.skill_level || 1
+    res.faceitLevel = playerFaceitGames?.cs2?.skill_level || 1
 
     const statsValues = {
       'Сыграно Игр': playerStats?.matches,
-      'ELO': playerFaceitGames?.csgo?.faceit_elo,
+      'ELO': playerFaceitGames?.cs2?.faceit_elo,
       'Win Rate': playerStats?.['win_rate_%'],
       'K/D': playerStats?.['average_k/d_ratio'],
       'Headshot rate': playerStats?.['average_headshots_%'],

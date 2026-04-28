@@ -19,7 +19,7 @@ export default defineEventHandler(async (event) => {
     picture: searchProps.picture,
     main_role: searchProps.main_role,
     secondary_roles: searchProps.secondary_roles,
-    faceitLevel: gamesData.games?.csgo?.skill_level,
-    elo: gamesData.games?.csgo?.faceit_elo,
+    faceitLevel: gamesData.games?.cs2?.skill_level,
+    elo: gamesData.games?.cs2?.faceit_elo,
   }
 })

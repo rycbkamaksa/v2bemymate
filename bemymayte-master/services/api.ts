@@ -51,14 +51,14 @@ export const api = {
 
   // топ 1 по кс на faceit)) чтобы точно проходить лимит по матчам, если что
   async getPlayersStats(playerId: string = '4cd0d638-8cf3-4770-8b44-d6576f69d2a5'): Promise<RemapToSnakeKeys<IPlayerStats>> {
-    const { lifetime: stats } = await dataApiRequest<{ lifetime: IPlayerStats }>(`/players/${playerId}/stats/csgo`)
+    const { lifetime: stats } = await dataApiRequest<{ lifetime: IPlayerStats }>(`/players/${playerId}/stats/cs2`)
     // в интерфейсе числа, а приходят строки => конвертируем
     return RemapObjectToSnakeKeys(stats, (val) => Number(val))
   },
 
   async getPlayersMatches(playerId: string, count: number): Promise<IMatch[]> {
     // можно брать дату регистрации пользователя через createdAt
-    const { items } = await wrapError(dataApiRequest<{ items: IMatch[] }>(`/players/${playerId}/history?game=csgo&offset=0&limit=${count}`), (err) => {
+    const { items } = await wrapError(dataApiRequest<{ items: IMatch[] }>(`/players/${playerId}/history?game=cs2&offset=0&limit=${count}`), (err) => {
       attachedLogger.warn(`Failed to load player's matches: ${err}`)
       return {
         items: []
