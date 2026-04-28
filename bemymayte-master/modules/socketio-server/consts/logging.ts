@@ -42,20 +42,21 @@ export interface ILoggerArgs {
   err?: string | Error,
 }
 
-const stdFormat = format.printf((info) => {
+const stdFormat = format.printf((rawInfo) => {
+  const info = rawInfo as unknown as ILoggerArgs
   let formatted = `${info.timestamp} ${info.level}: `
 
-  Object.entries(info as ILoggerArgs).forEach(([k, v]) => {
+  Object.entries(info).forEach(([k, v]) => {
     if (k === 'level' || k === 'timestamp' || k === 'cmd' || k === 'message' || k === 'err') {
       return
     }
 
     if (k === 'players') {
-      info.players = info.players.map((plGuid) => prodColorizer('guid', plGuid))
+      info.players = (info.players ?? []).map((plGuid) => prodColorizer('guid', plGuid))
       return
     }
 
-    info[k] = prodColorizer(k, v)
+    (info as Record<string, unknown>)[k] = prodColorizer(k, v as string)
   })
 
   const {
@@ -66,7 +67,7 @@ const stdFormat = format.printf((info) => {
     room = prodColorizer('guid', '?'),
     players = [],
     err = '',
-  } = info as ILoggerArgs
+  } = info
 
   let msgContent = ''
   switch (cmd) {
