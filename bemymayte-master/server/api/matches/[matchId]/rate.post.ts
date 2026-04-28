@@ -64,14 +64,14 @@ export default defineEventHandler(async (event): Promise<void | H3Error> => {
       players: matchPlayerStats,
     })
     if (result.matchedCount === 0) {
-      attachedLogger.warn(`rate.post: Match ${matchId} not updated for voter ${guid} (matchedCount=0)`)
+      attachedLogger.error(`rate.post: Match ${matchId} not updated for voter ${guid} (matchedCount=0)`)
       return createError({
         statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
         statusMessage: 'Failed to persist rating',
       })
     }
   } catch (err) {
-    attachedLogger.warn(`Failed to update rating for match ${matchId}: ${err}`)
+    attachedLogger.error(`Failed to update rating for match ${matchId} (voter ${guid}): ${(err as Error)?.stack ?? err}`)
     return createError({
       statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
       statusMessage: 'Failed to persist rating',
