@@ -57,7 +57,7 @@ import ButtonSecondary from '../components/buttons/secondary.vue'
 import { Player } from '~/models'
 
 import { computed, onMounted, ref } from 'vue'
-import { SocketRequests } from '~~/types/sockets'
+import { SocketRequests } from '~/types/sockets'
 import { useTeamSlots } from '~/composables/useTeamSlots'
 import { wrapError } from '~/utils'
 

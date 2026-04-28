@@ -1,4 +1,4 @@
-import { stdLogger } from '~/server/consts/loggers'
+import { stdLogger } from '~~/server/consts/loggers'
 
 export default defineEventHandler((e) => {
   stdLogger.info({

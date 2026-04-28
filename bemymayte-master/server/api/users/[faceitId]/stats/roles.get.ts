@@ -1,6 +1,6 @@
 import { RoleEnum } from '~/types/bemymateAPI/roles'
-import { Stat } from '~/server/models/stat'
-import { useQuery } from 'h3'
+import { Stat } from '~~/server/models/stat'
+import { getQuery } from 'h3'
 
 // эндпоинт возвращает статистику игрока по ролям
 export default defineEventHandler(async (event) => {
@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
 
   // параметр only позволяет выбрать конкретные роли для извлечения статистики,
   // без него возвращается статистика по всем ролям
-  const { only } = useQuery(event)
+  const { only } = getQuery(event)
   let rolesToCollect = [...Object.keys(RoleEnum)]
   if (only) {
     rolesToCollect = String(only).split(':')

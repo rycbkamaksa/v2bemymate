@@ -1,4 +1,4 @@
-import { User } from '~/server/models/user'
+import { User } from '~~/server/models/user'
 import { wrapError } from '~/utils'
 import { api } from '~/services/api'
 

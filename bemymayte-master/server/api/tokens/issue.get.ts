@@ -1,12 +1,12 @@
 import type { IUser } from '~/types/user'
 import { COOKIES } from '~/consts'
-import { User } from '~/server/models/user'
+import { User } from '~~/server/models/user'
 import { api } from '~/services/api'
-import { attachedLogger, stdLogger } from '~/server/consts/loggers'
+import { attachedLogger, stdLogger } from '~~/server/consts/loggers'
 import jwtDecode from 'jwt-decode'
 
 export default defineEventHandler(async (event) => {
-  const { code } = useQuery(event)
+  const { code } = getQuery(event)
 
   const { access_token, refresh_token, id_token, expires_in } = await api.requestTokens(String(code))
   const tokensData = {

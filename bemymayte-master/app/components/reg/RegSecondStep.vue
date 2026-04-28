@@ -1,10 +1,12 @@
 <template>
-  <!-- eslint-disable-next-line vue/no-mutating-props  -->
-  <CardField v-model="modelValue"
-             :checkbox="this.mainRole !== 'AWP'"
-             :cards="cards"
-             class="grid-cols-3 gap-4 mb-10"
-             :class="this.mainRole === 'AWP' ? 'flex' : 'grid'"/>
+  <CardField
+    :modelValue="modelValue"
+    @update:modelValue="$emit('update:modelValue', $event)"
+    :checkbox="mainRole !== 'AWP'"
+    :cards="cards"
+    class="grid-cols-3 gap-4 mb-10"
+    :class="mainRole === 'AWP' ? 'flex' : 'grid'"
+  />
 </template>
 
 <script lang="ts">
@@ -24,6 +26,7 @@ export default {
       required: true
     }
   },
+  emits: ['update:modelValue'],
   data() {
     const awp = this.mainRole === 'AWP'
 
@@ -32,12 +35,6 @@ export default {
           ? ['IGL', 'Entry']
           : ['IGL', 'Entry', 'Support', 'Anchor', 'Lurker']
     }
-  },
-  watch: {
-    modelValue(roles) {
-      this.$emit('update:modelValue', roles)
-    }
   }
 }
 </script>
-

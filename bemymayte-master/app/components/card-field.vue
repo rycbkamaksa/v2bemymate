@@ -2,8 +2,12 @@
   <ul>
     <li v-for="card in cards" :key="card" class="card">
       <label>
-        <!--   eslint-disable-next-line vue/no-mutating-props     -->
-        <input :type="checkbox ? 'checkbox' : 'radio'" :value="card" v-model="modelValue">
+        <input
+          :type="checkbox ? 'checkbox' : 'radio'"
+          :value="card"
+          :checked="isChecked(card)"
+          @change="onChange(card, $event)"
+        >
         <div class="wrapper">
           <img src="../assets/Checkmark.svg" alt="checkmark" class="hidden mr-2">
           <span>
@@ -33,9 +37,28 @@ export default {
       required: true
     }
   },
-  watch: {
-    modelValue(newValue) {
-      this.$emit('update:modelValue', newValue)
+  emits: ['update:modelValue'],
+  methods: {
+    isChecked(card: string): boolean {
+      if (this.checkbox && Array.isArray(this.modelValue)) {
+        return this.modelValue.includes(card)
+      }
+      return this.modelValue === card
+    },
+    onChange(card: string, event: Event) {
+      const target = event.target as HTMLInputElement
+      if (this.checkbox) {
+        const arr = Array.isArray(this.modelValue) ? [...this.modelValue] : []
+        if (target.checked) {
+          if (!arr.includes(card)) arr.push(card)
+        } else {
+          const idx = arr.indexOf(card)
+          if (idx >= 0) arr.splice(idx, 1)
+        }
+        this.$emit('update:modelValue', arr)
+      } else {
+        this.$emit('update:modelValue', card)
+      }
     }
   }
 }

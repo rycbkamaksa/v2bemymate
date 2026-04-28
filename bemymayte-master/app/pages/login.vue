@@ -41,7 +41,7 @@ import ButtonSecondary from '../components/buttons/secondary.vue'
 import { useRegDataStore, useUserStore } from '~/store/user'
 import jwtDecode from 'jwt-decode'
 import { onMounted, reactive, computed } from 'vue'
-import { $fetch } from 'ohmyfetch'
+import { $fetch } from 'ofetch'
 
 definePageMeta({
   layout: 'auth',

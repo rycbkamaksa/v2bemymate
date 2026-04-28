@@ -89,3 +89,19 @@ Mongo data persists in the `mongo_data` named volume. Logs are bind-mounted to `
 The reverse proxy (nginx on the host) should forward:
 - `/` → `http://127.0.0.1:3001` (Nuxt app)
 - `/socket.io/` → `http://127.0.0.1:5176` with WebSocket upgrade headers (Socket.IO server)
+
+## Rollback strategy
+
+If a new release breaks production, revert and rebuild only the `app` container:
+
+```bash
+cd /opt/bemymate
+sudo git log --oneline -3                  # find the last good SHA
+sudo git revert <bad-commit-sha> --no-edit # creates a revert commit on main
+cd bemymayte-master
+sudo docker compose up -d --build app
+sudo docker compose logs --tail 30 app     # confirm it's up
+curl -sI https://bemymate.ru/              # expect 200 OK
+```
+
+Total rollback time: ~2 minutes. Mongo and Socket.IO containers stay up — only the Nuxt `app` is rebuilt.

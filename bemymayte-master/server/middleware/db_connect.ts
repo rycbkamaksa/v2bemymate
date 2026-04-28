@@ -1,5 +1,5 @@
 import { ROUTES } from '~/consts'
-import { attachedLogger, stdLogger } from '~/server/consts/loggers'
+import { attachedLogger, stdLogger } from '~~/server/consts/loggers'
 import { RouteMatches, wrapError } from '~/utils'
 import mongoose from 'mongoose'
 

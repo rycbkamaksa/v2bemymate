@@ -5,8 +5,8 @@ import type { IPlayerStats } from '~/types/faceitAPI/data/playerStats'
 import type { IMatch, IMatchStats } from '~/types/faceitAPI/data/match'
 import { RemapObjectToSnakeKeys, wrapError } from '~/utils'
 import qs from 'qs'
-import { $fetch } from 'ohmyfetch'
-import { attachedLogger } from '~/server/consts/loggers'
+import { $fetch } from 'ofetch'
+import { attachedLogger } from '~~/server/consts/loggers'
 
 const config = useRuntimeConfig()
 

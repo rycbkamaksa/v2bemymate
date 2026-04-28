@@ -4,7 +4,7 @@ import { searchConf } from '../consts/matchingConfig'
 import uniqid from 'uniqid'
 import {formPlayerRefs, wrapError} from '../runtime/utils'
 import {SocketRequests} from "./requests"
-import {$fetch} from "ohmyfetch";
+import {$fetch} from "ofetch";
 import {BASE_APP_URL} from "../consts/requests";
 import {stdLogger} from "../consts/logging";
 

@@ -1,12 +1,11 @@
-FROM node:18.4
+FROM node:20-slim
 
 WORKDIR /app/bemymate-search
 
-COPY package.json .
-COPY yarn.lock .
+COPY package.json package-lock.json ./
 
-RUN yarn install
+RUN npm ci --no-audit --no-fund
 
 COPY ./ ./
 
-CMD yarn serve
+CMD ["npm", "run", "serve"]

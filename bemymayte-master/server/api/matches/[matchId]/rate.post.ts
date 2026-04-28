@@ -1,6 +1,6 @@
 import type { IRateMatchPayload } from '~/types/bemymateAPI/matches'
-import { Match } from '~/server/models/match'
-import { attachedLogger } from '~/server/consts/loggers'
+import { Match } from '~~/server/models/match'
+import { attachedLogger } from '~~/server/consts/loggers'
 import { wrapError } from '~/utils'
 import type { H3Error } from 'h3'
 import { StatusCodes } from 'http-status-codes'

@@ -3,7 +3,7 @@ import { LS_KEYS } from '~/consts'
 import { wrapError } from '~/utils'
 import jwtDecode from 'jwt-decode'
 import { defineStore } from 'pinia'
-import { Player } from '~~/models'
+import { Player } from '~/models'
 
 export const useUserStore = defineStore('user', {
   state: () => ({} as IUserState),

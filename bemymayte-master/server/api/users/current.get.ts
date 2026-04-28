@@ -1,5 +1,5 @@
-import { User } from '~/server/models/user'
-import { attachedLogger } from '~/server/consts/loggers'
+import { User } from '~~/server/models/user'
+import { attachedLogger } from '~~/server/consts/loggers'
 
 // Возвращает основную информацию про текущего пользователя по куке
 // может использоваться, чтобы, например, пропатчить юзер стейт

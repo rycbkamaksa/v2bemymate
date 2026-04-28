@@ -37,7 +37,7 @@
 import MessageBubble from './message-bubble.vue'
 import { Player } from '~/models'
 import { useUserStore } from '~/store/user'
-import { SocketRequests } from '~~/types/sockets'
+import { SocketRequests } from '~/types/sockets'
 import { useRoomStore } from '~/store/room'
 import { onMounted } from 'vue'
 

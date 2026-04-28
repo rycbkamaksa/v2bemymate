@@ -1,12 +1,12 @@
 // эта ручка будет добавлять матч в рейтинги
 
 import { wrapError } from '~/utils'
-import { Match } from '~/server/models/match'
-import { attachedLogger, stdLogger } from '~/server/consts/loggers'
+import { Match } from '~~/server/models/match'
+import { attachedLogger, stdLogger } from '~~/server/consts/loggers'
 import { createError } from 'h3'
 import { StatusCodes } from 'http-status-codes'
 import { RoleRates } from '~/types/bemymateAPI/matches'
-import { Stat } from '~/server/models/stat'
+import { Stat } from '~~/server/models/stat'
 
 export default defineEventHandler(async (event) => {
   const { matchId = null } = event.context.params

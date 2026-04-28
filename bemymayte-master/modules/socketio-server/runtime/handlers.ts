@@ -15,7 +15,7 @@ import { formPlayerRefs, wrapError } from './utils'
 import { applicants, rooms } from './sharedState'
 import { startMatching } from './matching'
 import type { Server } from 'socket.io'
-import { $fetch } from 'ohmyfetch'
+import { $fetch } from 'ofetch'
 import { BASE_APP_URL } from '../consts/requests'
 
 const findMatch = (applicant: IApplicant, io: Server) => {

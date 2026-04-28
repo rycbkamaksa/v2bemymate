@@ -1,12 +1,12 @@
 import type { IUser } from '~/types/user'
 import { COOKIES } from '~/consts'
-import { User } from '~/server/models/user'
-import { Stat } from '~/server/models/stat'
+import { User } from '~~/server/models/user'
+import { Stat } from '~~/server/models/stat'
 import jwt from 'jsonwebtoken'
 import { faker } from '@faker-js/faker'
 import { getQuery } from 'h3'
 import { wrapError } from '~/utils'
-import { attachedLogger } from '~/server/consts/loggers'
+import { attachedLogger } from '~~/server/consts/loggers'
 
 // Добавляет замоканного пользователя в базу, как будто он зареган
 // через параметры AWP, role можно задать роли юзера

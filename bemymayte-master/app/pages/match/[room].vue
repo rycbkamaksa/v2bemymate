@@ -32,7 +32,7 @@
 </template>
 
 <script setup lang='ts'>
-import TeamView from '~~/components/teamview/TeamView.vue'
+import TeamView from '~/components/teamview/TeamView.vue'
 import { useTeamSlots } from '~/composables/useTeamSlots'
 import { SocketRequests } from '~/types/sockets'
 import { MatchStatus } from '~/types/faceitAPI/data/match'

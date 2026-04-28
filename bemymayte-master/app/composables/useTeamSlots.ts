@@ -1,4 +1,4 @@
-import { useUserStore } from '~~/store/user'
+import { useUserStore } from '~/store/user'
 import { useRoomStore } from '~/store/room'
 
 export function useTeamSlots() {

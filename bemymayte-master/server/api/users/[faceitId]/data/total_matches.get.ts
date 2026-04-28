@@ -1,6 +1,6 @@
 import { api } from '~/services/api'
 import { wrapError } from '~/utils'
-import { attachedLogger } from '~/server/consts/loggers'
+import { attachedLogger } from '~~/server/consts/loggers'
 
 export default defineEventHandler(async (event) => {
   const { faceitId } = event.context.params

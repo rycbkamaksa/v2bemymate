@@ -1,6 +1,6 @@
-import { User } from '~/server/models/user'
+import { User } from '~~/server/models/user'
 import { api } from '~/services/api'
-import { attachedLogger, stdLogger } from '~/server/consts/loggers'
+import { attachedLogger, stdLogger } from '~~/server/consts/loggers'
 import mongoose from 'mongoose'
 import { StatusCodes } from 'http-status-codes'
 

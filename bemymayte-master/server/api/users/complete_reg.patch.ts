@@ -1,14 +1,14 @@
 import type { IUserRegData } from '~/types/user'
 import type { IRoleStats } from '~/types/bemymateAPI/roles'
-import { User } from '~/server/models/user'
-import { Stat } from '~/server/models/stat'
-import { attachedLogger } from '~/server/consts/loggers'
+import { User } from '~~/server/models/user'
+import { Stat } from '~~/server/models/stat'
+import { attachedLogger } from '~~/server/consts/loggers'
 import { wrapError } from '~/utils'
-import { useBody } from 'h3'
+import { readBody } from 'h3'
 
 export default defineEventHandler(async (event) => {
   const { uidCookie: uid } = event.context
-  const regData = await useBody<IUserRegData>(event)
+  const regData = await readBody<IUserRegData>(event)
 
   const prevUser = await User.findByIdAndUpdate(String(uid), {
       ...regData,

@@ -1,4 +1,4 @@
-import { useUserStore } from '~~/store/user'
+import { useUserStore } from '~/store/user'
 import type { IUser, IUserState } from '~/types/user'
 import { wrapError } from '~/utils'
 import type { H3Error } from 'h3'

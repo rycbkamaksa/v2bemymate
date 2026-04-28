@@ -1,10 +1,10 @@
 import { COOKIES } from '~/consts'
-import { User } from '~/server/models/user'
-import { stdLogger } from '~/server/consts/loggers'
-import { useQuery } from 'h3'
+import { User } from '~~/server/models/user'
+import { stdLogger } from '~~/server/consts/loggers'
+import { getQuery } from 'h3'
 
 export default defineEventHandler(async (event) => {
-  const { email } = useQuery(event)
+  const { email } = getQuery(event)
   let acknowledged = false
 
   try {
