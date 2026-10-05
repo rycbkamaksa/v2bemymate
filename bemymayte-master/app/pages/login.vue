@@ -78,10 +78,11 @@ const checkToken = async () => {
           email: loginState.user.email,
         },
       }
-    )
+    ).catch(() => ({ acknowledged: false }))
 
     if (!acknowledged) {
-      alert(`Пользователь ${loginState.user.nickname} не найден, попробуйте войти в другую учетную запись`)
+      // сессии нет или она истекла — входим через FACEIT
+      window.location.href = loginLink
     } else {
       await router.push('/')
     }
